@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Category(models.Model):
+    '''Категория товара'''
+
     name = models.CharField(
         max_length=40,
         db_index=True
@@ -21,6 +23,8 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
+    '''Товар'''
+
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
@@ -40,4 +44,11 @@ class Product(models.Model):
 
 
 class Article(models.Model):
+    '''Статья на главную'''
+    '''
+    header = models.CharField(max_length=100)
+    text = models.TextField(max_length=2500)
+    image = models.ImageField(upload_to='media/articles/%Y/%m/%d', blank=True)
+    related_product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    '''
     pass
