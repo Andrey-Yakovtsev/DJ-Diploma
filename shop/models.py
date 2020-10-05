@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -19,10 +20,14 @@ class Category(models.Model):
     class Meta:
         ordering = ('name',)
         verbose_name = 'Категория'
-        verbose_name_plural = "Категорий"
+        verbose_name_plural = "Категории"
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('shop:product_list_by_category',
+                       args=[self.slug])
 
 
 class Product(models.Model):
@@ -42,23 +47,29 @@ class Product(models.Model):
         ordering = ('name',)
         index_together = (('id', 'slug'),)
         verbose_name = 'Товар'
-        verbose_name_plural = 'Товаров'
+        verbose_name_plural = 'Товары'
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('shop:product_detail',
+                       args=[self.id, self.slug])
 
 
 class Article(models.Model):
     '''Статья на главную'''
 
-    header = models.CharField(max_length=100, null=False, blank=False, default='')
+    slug = models.SlugField(max_length=200, db_index=True)
+    header = models.CharField(max_length=100, null=False, blank=False)
     text = models.TextField(max_length=2500, null=True, blank=True)
     image = models.ImageField(upload_to='media/articles/%Y/%m/%d', blank=True)
     related_product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
 
     class Meta:
+        index_together = (('id', 'slug'),)
         verbose_name = 'Статья'
-        verbose_name_plural = 'Статей'
+        verbose_name_plural = 'Статьи'
 
     def __str__(self):
         return f'{self.header}'
