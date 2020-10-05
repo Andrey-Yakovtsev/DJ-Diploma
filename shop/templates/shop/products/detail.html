@@ -13,7 +13,7 @@
         <h2>{{ product.name }}</h2>
 
 
-        <img src="{{ product.image }}" width="120">
+        <img src="{{ product.image.path }}" width="600">
 
         <p>{{ product.description | linebreaks }}</p>
           <p class="price"> Цена: {{ product.price }} руб.</p>

@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <h5>{{ product.name }}</h5>
                 <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image }}" width="180">
+                    <img src="{{ product.image.path }}" width="360">
                 </a>
                 <br>
                 <h6 class="btn-outline-info">{{ product.price }} Руб.</h6>
