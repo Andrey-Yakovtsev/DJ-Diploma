@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -15,12 +17,13 @@ class Category(models.Model):
     )
 
     class Meta:
-        ordering = 'name',
+        ordering = ('name',)
         verbose_name = 'Категория'
         verbose_name_plural = "Категорий"
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     '''Товар'''
@@ -32,12 +35,14 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = 'name'
+        ordering = ('name',)
         index_together = (('id', 'slug'),)
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товаров'
 
     def __str__(self):
         return self.name
@@ -45,10 +50,15 @@ class Product(models.Model):
 
 class Article(models.Model):
     '''Статья на главную'''
-    '''
-    header = models.CharField(max_length=100)
-    text = models.TextField(max_length=2500)
+
+    header = models.CharField(max_length=100, null=False, blank=False, default='')
+    text = models.TextField(max_length=2500, null=True, blank=True)
     image = models.ImageField(upload_to='media/articles/%Y/%m/%d', blank=True)
     related_product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
-    '''
-    pass
+
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статей'
+
+    def __str__(self):
+        return f'{self.header}'
