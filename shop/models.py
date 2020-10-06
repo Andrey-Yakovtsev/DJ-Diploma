@@ -63,7 +63,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=200, db_index=True)
     header = models.CharField(max_length=100, null=False, blank=False)
     text = models.TextField(max_length=2500, null=True, blank=True)
-    image = models.ImageField(upload_to='media/articles/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to='media/articles/', blank=True)
     related_product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
 
     class Meta:
@@ -73,3 +73,7 @@ class Article(models.Model):
 
     def __str__(self):
         return f'{self.header}'
+
+    def get_absolute_url(self):
+        return reverse('shop:article_detail',
+                       args=[self.slug])

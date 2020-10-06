@@ -4,9 +4,11 @@ from .models import Category, Product, Article
 
 def main_page(request):
     products = Product.objects.filter(available=True)
+    articles = Article.objects.select_related('related_product')
     return render(request,
                   'shop/products/index.html',
-                  {'products': products})
+                  {'products': products,
+                   'articles': articles})
 
 def product_list(request, category_slug=None):
     category = None
@@ -35,3 +37,15 @@ def product_detail(request, id, slug):
                   'shop/products/detail.html',
                   {'product': product,
                    'category': category})
+
+
+def article_detail(request, slug):
+    products = Article.objects.select_related('related_product')
+    # articles = get_object_or_404(
+    #     Article,
+    #     slug=slug)
+    articles = Article.objects.all(slug=slug)
+    return render(request,
+                  'shop/articles/article_detail.html',
+                  {'products': products,
+                   'articles': articles})

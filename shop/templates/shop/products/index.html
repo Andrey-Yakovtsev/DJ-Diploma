@@ -26,3 +26,27 @@
     </div>
 
 {% endblock %}
+
+{% block content2  %}
+<div class="container">
+    <!-- Example row of columns -->
+        <div class="row">
+            {% for article in articles %}
+            <div class="col-md-3">
+                <a href="{{ article.get_absolute_url }}">
+                <h5>{{ article.header }}</h5>
+                    </a>
+                <a href="{{ article.get_absolute_url }}">
+                    <img src="{{ article.image }}" width="180">
+                </a>
+                <br>
+                <p >{{ article.text | linebreaks }}</p>
+                <br>
+                <form>
+                      <input type="submit" class="btn btn-secondary" value="Читать»">
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

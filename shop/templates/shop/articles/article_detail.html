@@ -1,0 +1,37 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}
+    {% for article in articles %}
+    {{ article.header }}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+     {% for article in articles %}
+    <div class="container mt-3">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>{{ article.header }}</h2>
+
+
+        <img src="{{ article.image.path }}" width="600">
+
+        <p>{{ article.text | linebreaks }}</p>
+
+      </div>
+    </div>
+    <hr>
+        {% for product in products %}
+
+            {{ product }}
+
+        {% endfor %}
+    <hr>
+
+
+
+  </div> <!-- /container -->
+{% endfor %}
+{% endblock %}

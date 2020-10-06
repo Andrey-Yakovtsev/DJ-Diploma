@@ -35,7 +35,7 @@
           Велосипеды</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
 
-          <a class="dropdown-item" href="smartphones.html">
+          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'velosipedy' %}">
             Шоссейные</a>
 
         </div>
@@ -44,8 +44,8 @@
 
       <li class="nav-item">
 
-        <a class="nav-link" href="{% url 'shop:product_list_by_category' 'product_list_by_category' %}">
-          Аксесcуары</a>
+        <a class="nav-link" href="{% url 'shop:product_list_by_category' 'veloaksessuary' %}">
+          Велоаксесcуары</a>
 
       </li>
 
@@ -79,26 +79,13 @@
 
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-4">Не знаете что надеть на тренировку?</h1>
-      <p>Вот что мы можем предложить:</p>
+      <h1 class="display-4">Еще не читали наши уникальные статьи?</h1>
+      <p>Вот тогда вам:</p>
     </div>
   </div>
 
-
-  <div class="container mb-5">
-    <!-- Example row of columns -->
-    <div class="row">
-
-      <div class="col-md-4">
-
         {% block content2 %}
-          {% endblock %}
-
-
-      </div>
-
-    </div>
-  </div> <!-- /container -->
+        {% endblock %}
 
 </main>
 
