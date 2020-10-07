@@ -1,14 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product, Article
-
+from cart.forms import CartAddProductForm
 
 def main_page(request):
     products = Product.objects.filter(available=True)
     articles = Article.objects.select_related('related_product')
+    cart_product_form = CartAddProductForm()
     return render(request,
                   'shop/products/index.html',
                   {'products': products,
-                   'articles': articles})
+                   'articles': articles,
+                   'cart_product_form': cart_product_form})
 
 def product_list(request, category_slug=None):
     category = None
@@ -18,11 +20,14 @@ def product_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
 
+    cart_product_form = CartAddProductForm()
+
     return render(request,
                   'shop/products/list.html',
                   {'category': category,
                    'categories': categories,
-                   'products': products})
+                   'products': products,
+                   'cart_product_form': cart_product_form})
 
 
 def product_detail(request, id, slug):
@@ -32,20 +37,23 @@ def product_detail(request, id, slug):
         id=id,
         slug=slug,
         available=True)
+    cart_product_form = CartAddProductForm()
 
     return render(request,
                   'shop/products/detail.html',
                   {'product': product,
-                   'category': category})
+                   'category': category,
+                   'cart_product_form': cart_product_form})
 
 
-def article_detail(request, slug):
+
+def article_detail(request, category_slug, slug):
     products = Article.objects.select_related('related_product')
-    # articles = get_object_or_404(
-    #     Article,
-    #     slug=slug)
-    articles = Article.objects.all(slug=slug)
+    article = get_object_or_404(Article, category_slug=category_slug, slug=slug)
     return render(request,
                   'shop/articles/article_detail.html',
-                  {'products': products,
-                   'articles': articles})
+                  {
+                      # 'products': products,
+                   'article': article,
+                   # 'category': category,
+                   })

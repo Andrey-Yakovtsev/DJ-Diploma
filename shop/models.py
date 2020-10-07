@@ -63,6 +63,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=200, db_index=True)
     header = models.CharField(max_length=100, null=False, blank=False)
     text = models.TextField(max_length=2500, null=True, blank=True)
+    category = models.ForeignKey(Category, related_name='article', on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='media/articles/', blank=True)
     related_product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
 
@@ -76,4 +77,8 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:article_detail',
-                       args=[self.slug])
+                       args=[
+                           self.category.slug,
+                           self.slug
+                       ]
+        )

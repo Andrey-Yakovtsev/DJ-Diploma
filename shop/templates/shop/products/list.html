@@ -14,8 +14,10 @@
                 <br>
                 <h6 class="btn-outline-info">{{ product.price }} Руб.</h6>
                 <br>
-                <form>
-                      <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+          <input type="submit" class="btn btn-secondary" value="Купить">
                 </form>
             </div>
         </div>
