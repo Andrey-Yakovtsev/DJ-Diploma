@@ -4,7 +4,7 @@ from cart.forms import CartAddProductForm
 
 def main_page(request):
     products = Product.objects.filter(available=True)
-    articles = Article.objects.select_related('related_product')
+    articles = Article.objects.all()
     cart_product_form = CartAddProductForm()
     return render(request,
                   'shop/products/index.html',
@@ -47,13 +47,13 @@ def product_detail(request, id, slug):
 
 
 
-def article_detail(request, category_slug, slug):
-    products = Article.objects.select_related('related_product')
-    article = get_object_or_404(Article, category_slug=category_slug, slug=slug)
+def article_detail(request, category_slug, article_slug):
+    products = Product.objects.select_related('category')
+    cart_product_form = CartAddProductForm()
+    article = get_object_or_404(Article, slug=article_slug)
     return render(request,
                   'shop/articles/article_detail.html',
-                  {
-                      # 'products': products,
-                   'article': article,
-                   # 'category': category,
+                  {'products': products,
+                    'article': article,
+                    'cart_product_form': cart_product_form
                    })

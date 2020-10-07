@@ -2,32 +2,56 @@
 {% load static %}
 
 {% block title %}
-{#    {% for article in articles %}#}
-{#    {{ article.header }}#}
-{#    {% endfor %}#}
-{% endblock %}
+{{ article.header }}
+{% endblock title%}
 
 {% block content %}
-{#     {% for article in articles %}#}
-{#    <div class="container mt-3">#}
-{#    <!-- Example row of columns -->#}
-{#    <div class="row">#}
-{#      <div class="col-md-12">#}
-{#        <h2>{{ article.header }}</h2>#}
+
+    <div class="container mt-3">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>{{ article.header }}</h2>
 
 
-{#        <img src="{{ article.image.path }}" width="600">#}
-{##}
-{#        <p>{{ article.text | linebreaks }}</p>#}
+        <img src="{{ article.image.url }}" width="600">
+
+        <p>{{ article.text | linebreaks }}</p>
 
       </div>
     </div>
     <hr>
-{#        {% for product in products %}#}
-{##}
-{#            {{ product }}#}
-{##}
-{#        {% endfor %}#}
+
+    <br>
+ <div class="container mb-5">
+
+     <div>
+         <h4>Сопутствующие товары:</h4>
+        <hr>
+     </div>
+    <!-- Example row of columns -->
+        <div class="row">
+            {% for product in article.related_product.prefetch_related.all %}
+
+            <div class="col-md-4">
+                <h5>{{ product.name}}</h5>
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.image.url }}" width="360">
+                </a>
+                <br>
+                <h6 class="btn-outline-info">{{ product.price }} Руб.</h6>
+                <br>
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-secondary" value="Купить">
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
     <hr>
 
 

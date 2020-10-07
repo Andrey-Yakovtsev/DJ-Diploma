@@ -65,7 +65,7 @@ class Article(models.Model):
     text = models.TextField(max_length=2500, null=True, blank=True)
     category = models.ForeignKey(Category, related_name='article', on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='media/articles/', blank=True)
-    related_product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    related_product = models.ManyToManyField(Product, related_name='products')
 
     class Meta:
         index_together = (('id', 'slug'),)
