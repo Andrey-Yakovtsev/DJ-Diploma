@@ -51,10 +51,20 @@
 
 
     </ul>
-    <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-       href="{% url 'cart:cart_detail' %}">
-      Корзина</a>
+  <div class="cart">
 
+       {% with total_items=cart|length  %}
+        {% if total_items > 0 %}
+            <a class="btn btn-success my-2 my-sm-0" role="button"
+        href="{% url 'cart:cart_detail' %}">
+            В корзине
+       {{ total_items }} шт., {{ cart.get_total_price }} руб. </a>
+       {% else %}
+            <a class="btn btn-outline-success my-2 my-sm-0" role="button">
+       В корзине пусто</a>
+           {% endif %}
+            {% endwith %}
+    </div>
 
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
        href="login.html">
