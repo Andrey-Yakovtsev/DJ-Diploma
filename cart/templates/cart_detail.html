@@ -68,9 +68,10 @@
     </div>
     <form class="col-lg-5" >
         <a href="{% url 'shop:main_page' %}"
-        <button type="submit" class="btn btn-secondary">Продолжить покупки</button>
+        <button type="submit" class="btn btn-secondary">
+            Продолжить покупки</button>
         </a>
-        <a href="#"
+        <a href="{% url 'orders:order_create' %}"
         <button type="submit" class="btn btn-primary">Оформить заказ</button>
         </a>
       </form>
