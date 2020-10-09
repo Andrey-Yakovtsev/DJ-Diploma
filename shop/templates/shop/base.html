@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{% block title %} Graduation Work {% endblock %}</title>
+  <title>{% block title %} DJ-12 - Диплом {% endblock %}</title>
   <link rel="stylesheet" href="{% static '/bootstrap.min.css'%}">
   <link rel="stylesheet" href="{% static '/main.css'%}">
 </head>
@@ -81,14 +81,14 @@
             В корзине
        {{ total_items }} шт., {{ cart.get_total_price }} руб. </a>
        {% else %}
-            <a class="btn btn-outline-success my-2 my-sm-0" role="button">
+            <a class="btn btn-secondary my-2 my-sm-0" role="button">
        В корзине пусто</a>
            {% endif %}
             {% endwith %}
     </div>
 
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-       href="login.html">
+       href="{% url 'users:login' %}">
       Войти</a>
 
   </div>

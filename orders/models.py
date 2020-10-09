@@ -4,7 +4,7 @@ from shop.models import Product
 
 class Order(models.Model):
     first_name = models.CharField(max_length=40)
-    second_name = models.CharField(max_length=40)
+    last_name = models.CharField(max_length=40)
     email = models.EmailField(max_length=50)
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=20)
