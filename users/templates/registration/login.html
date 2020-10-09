@@ -1,0 +1,25 @@
+{% extends 'shop/blank.html' %}
+
+{% block title %}
+    Авторизация
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+    <h1>Авторизуйтесь</h1>
+{% if form.errors %}
+    <p> Логин или пароль указан неверно</p>
+    {% else %}
+    <p>Заполните поля для входа:</p>
+    {% endif %}
+    <div class="login-form">
+    <form action="{% url 'login:login' %}" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="hidden" value="{{ next }}" />
+        <p><input type="submit" value="Войти"></p>
+    </form>
+    </div>
+    </div>
+{% endblock content %}

@@ -131,3 +131,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'shop/static/')
 STATICFILES_DIRS = [STATIC_DIR]
 
 CART_SESSION_ID = 'cart'
+
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'

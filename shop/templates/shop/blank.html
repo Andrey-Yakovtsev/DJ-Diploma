@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %} DJ-12 - Диплом {% endblock %}</title>
+  <link rel="stylesheet" href="{% static '/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static '/main.css'%}">
+</head>
+<body class="" data-gr-c-s-loaded="true">
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="{% url 'shop:main_page' %}">Супер-Веломагазин</a>
+  <img src="{% static '/logo.svg'%}" alt="" width="42" height="42">
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'shop:main_page' %}">
+          Главная</a>
+      </li>
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Велосипеды</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'velosipedy' %}">
+            Шоссейные</a>
+            <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'gornye' %}">
+            Горные</a>
+
+        </div>
+      </li>
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Велоаксессуары</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'shlemy' %}">
+            Шлемы</a>
+            <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'ochki' %}">
+            Очки</a>
+
+        </div>
+      </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Компоненты</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'kassety' %}">
+            Кассеты</a>
+
+
+        </div>
+      </li>
+
+
+    </ul>
+  <div class="cart">
+
+       {% with total_items=cart|length  %}
+        {% if total_items > 0 %}
+            <a class="btn btn-success my-2 my-sm-0" role="button"
+        href="{% url 'cart:cart_detail' %}">
+            В корзине
+       {{ total_items }} шт., {{ cart.get_total_price }} руб. </a>
+       {% else %}
+            <a class="btn btn-secondary my-2 my-sm-0" role="button">
+       В корзине пусто</a>
+           {% endif %}
+            {% endwith %}
+    </div>
+
+    <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+       href="{% url 'users:login' %}">
+      Войти</a>
+
+  </div>
+</nav>
+
+
+<main role="main">
+
+  <div class="jumbotron">
+
+
+  </div>
+
+{% block content %}
+{% endblock %}
+
+
+
+</main>
+
+<hr>
+<footer class="container">
+  <p>© Супер магазин 2020</p>
+</footer>
+
+<script src="{% static '/jquery-3.3.1.slim.min.js'%}"></script>
+<script src="{% static '/popper.min.js'%}"></script>
+<script src="{% static '/bootstrap.min.js'%}"></script>
+</body>
+</html>
