@@ -1,0 +1,243 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script src="https://use.fontawesome.com/4fa8ba7a9b.js"></script>
+  <title>{% block title %} DJ-12 - Диплом {% endblock %}</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css'%}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.min.css'%}" rel="stylesheet">
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="#">
+        <strong class="blue-text">SuperBikeStore.ru</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+          {% if request.user.is_authenticated %}
+            <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="">
+              Мой кабинет</a>
+          </li>
+          <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <span href="" class="nav-link waves-effect">
+              <i class="far fa-user"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Привет {{ request.user.first_name }} </span>
+            </span>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="{% url 'users:logout' %}" class="nav-link border border-light rounded waves-effect">
+              <i class="fas fa-sign-in-alt"></i>Выйти
+            </a>
+          </li>
+        </ul>
+
+            {% else %}
+         <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'shop:main_page' %}">
+          Главная</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Велосипеды</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'velosipedy' %}">
+            Шоссейные</a>
+            <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'gornye' %}">
+            Горные</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Велоаксессуары</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'shlemy' %}">
+            Шлемы</a>
+            <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'ochki' %}">
+            Очки</a>
+        </div>
+      </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Компоненты</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'kassety' %}">
+            Кассеты</a>
+        </div>
+      </li>
+    </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="{% url 'cart:cart_detail' %}" class="nav-link waves-effect">
+            {% with total_items=cart|length  %}
+                {% if total_items > 0 %}
+              <span class="badge red z-depth-1 mr-1"> {{ total_items }} </span>
+                {% else %}
+                <span class="badge red z-depth-1 mr-1"> 0 </span>
+                {% endif %}
+            {% endwith %}
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Корзина </span>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="{% url 'users:login' %}" class="nav-link border border-light rounded waves-effect">
+              <i class="fas fa-sign-in-alt"></i>Войти
+            </a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!--Carousel Wrapper-->
+  <div class="container p-md-5">
+
+  </div>
+  <!--/.Carousel Wrapper-->
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="container pb-4">
+      <a href="">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="">
+        <i class="fab fa-google-plus-g mr-3"></i>
+      </a>
+
+      <a href="">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="container footer-copyright py-3">
+      © 2020 Copyright:
+      <a href=""> Superbikestore.com </a>
+    </div>
+  </main>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.js"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+</body>
+
+</html>

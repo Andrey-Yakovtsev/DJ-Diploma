@@ -1,54 +1,119 @@
-{% extends 'shop/base.html' %}
+{% extends 'shop/base2.html' %}
 {% load static %}
+{% load price_format %}
 
 {% block content  %}
 
-    <div class="container">
-    <!-- Example row of columns -->
-        <div class="row">
-            {% for product in products %}
-            <div class="col-md-3">
+    <!--Section: Products v.3-->
+      <section class="text-center mb-4">
 
-                <h5>{{ product.name }}</h5>
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image }}" width="180">
+        <!--Grid row-->
+        <div class=card-deck>
+            {% for product in products %}
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ product.image }}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight" ></div>
                 </a>
-                <br>
-                <h6 class="btn-outline-info">{{ product.price }} Руб.</h6>
-                <br>
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="{% url 'shop:product_list_by_category' 'category_slug' %}" class="grey-text">
+                  <h5>{{ product.category.first }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ product.get_absolute_url }}" class="dark-grey-text">{{ product.name }}
+                      <span class="badge badge-pill danger-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong> {{ product.price | price_format }} </strong> <i class="fas fa-ruble-sign"></i>
+                </h4>
+                  <form action="{% url 'cart:cart_add' product.id %}" method="post">
             {{ cart_product_form }}
             {% csrf_token %}
-          <input type="submit" class="btn btn-secondary" value="Купить">
+          <input type="submit" class="btn btn-blue blue lighten-2 rounded" value="Купить">
                 </form>
 
+              </div>
+              <!--Card content-->
             </div>
+            <!--Card-->
+          </div>
             {% endfor %}
+          <!--Grid column-->
         </div>
-    </div>
+        <!--Grid row-->
+      </section>
+      <!--Section: Products v.3-->
 
 {% endblock %}
 
 {% block content2  %}
-<div class="container">
-    <!-- Example row of columns -->
-        <div class="row">
+    <!--Section: Products v.3-->
+    <div class="container">
+      <section class="text-center mb-4">
+
+        <!--Grid row-->
+        <div class=card-deck>
             {% for article in articles %}
-            <div class="col-md-3">
-                <a href="{{ article.get_absolute_url }}">
-                <h5>{{ article.header }}</h5>
-                    </a>
-                <a href="{{ article.get_absolute_url }}">
-                    <img src="{{ article.image }}" width="240">
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ article.image }}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight" ></div>
                 </a>
-                <br>
-                <p >{{ article.text | linebreaks }}</p>
-                <br>
-                <form>
-                      <input type="submit" class="btn btn-secondary" value="Читать»">
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="{{ article.get_absolute_url }}" class="grey-text">
+                </a>
+                <h5>
+                  <strong>
+                    <a href="" class="dark-grey-text">{{ article.header }}
+                    </a>
+                  </strong>
+                </h5>
+
+                  <form action="{{ article.get_absolute_url }}" method="get">
+          <input type="submit" class="btn btn-blue blue lighten-2 rounded" value="Читать">
                 </form>
+
+              </div>
+              <!--Card content-->
             </div>
+            <!--Card-->
+          </div>
             {% endfor %}
+          <!--Grid column-->
         </div>
+        <!--Grid row-->
+      </section>
     </div>
-{% endblock %}
+      <!--Section: Products v.3-->
+{% endblock content2 %}
+<!-- Card deck -->

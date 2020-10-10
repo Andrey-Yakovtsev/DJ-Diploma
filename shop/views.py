@@ -10,11 +10,20 @@ def main_page(request):
     products = Product.objects.filter(available=True)
     articles = Article.objects.all()
     cart_product_form = CartAddProductForm()
+    paginator = Paginator(list(products), 4)
+    current_page = request.GET.get('page', 1)
+    page_obj = paginator.get_page(current_page)
     return render(request,
                   'shop/products/index.html',
-                  {'products': products,
-                   'articles': articles,
-                   'cart_product_form': cart_product_form})
+                  {'articles': articles,
+                   'cart_product_form': cart_product_form,
+                   'products': page_obj,
+                   'current_page': current_page,
+                   'prev_page_url': '?' + urlencode({
+                       'page': page_obj.previous_page_number()}) if page_obj.has_previous() else None,
+                   'next_page_url': '?' + urlencode({
+                       'page': page_obj.next_page_number()}) if page_obj.has_next() else None
+                   })
 
 def product_list(request, category_slug=None):
     category = None
@@ -31,10 +40,6 @@ def product_list(request, category_slug=None):
 
     return render(request,
                   'shop/products/list.html',
-                  # {'category': category,
-                  #  'categories': categories,
-                  #  'products': products,
-                  #  'cart_product_form': cart_product_form})
                   {'category': category,
                    'categories': categories,
                    'cart_product_form': cart_product_form,

@@ -13,6 +13,7 @@
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
         <button class="btn btn-lg btn-success" type="submit">Войти</button>
     </form>
 
