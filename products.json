@@ -1,0 +1,222 @@
+[
+{
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+        "name": "Wilier 101NDR 105 7000 Aksium / 2020",
+        "slug": "wilier-101ndr-105-7000-aksium-2020",
+        "image": "media/products/aa48f04f-a014-11ea-b837-b42e9964e487_dfbc2963-f26d-11ea-b846-_MPhLLeU_s5ECLNC.webp",
+        "description": "Гоночная рама, которая усиливает связь между максимальной производительностью и комфортом. Cento10NDR позволяет ездить длительное время, благодаря специальной геометрии и новому узлу рамы - системе ACTIFLEX.  ACTIFLEX новейшая разработка, созданная инженерами Wilier которая гасит удары и вибрации заднего колеса, возникающие на плохом дорожном покрытии.",
+        "price": "239000",
+        "available": true,
+        "created": "2020-10-05T06:29:26.846Z",
+        "updated": "2020-10-09T06:51:52.616Z",
+        "category": [
+            1,
+            7
+        ]
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+        "name": "Велосипед FELT AR FRD / 2018",
+        "slug": "felt-ar-frd-2018",
+        "image": "media/products/felt_frd_mdnJeyW.webp",
+        "description": "AR FRD - лучший аэрошоссейный велосипед в мире. Некоторые технологические отличия Felt AR привели к новому мышлению среди покупателей в отношении аэрошоссеров. Лучшая жесткость и вес в своем классе добавлены лучшими аэродинамическими качествами на рынке. Карбоновая рама велосипеда Felt AR создавалась на протяжении 3 лет инженерами Felt с помощью специальных программ жесткости материалов в движении и тестов в аэродинамической трубе, что позволило получить скоростное превосходство AR на 31% по сравнению с классическими шоссейными велосипедами конкурентов.",
+        "price": "966900",
+        "available": true,
+        "created": "2020-10-05T06:32:55.518Z",
+        "updated": "2020-10-10T09:16:09.312Z",
+        "category": [
+            1,
+            7
+        ]
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+        "name": "TACX NEO 2T Smart / Велотренажер",
+        "slug": "tacx-neo-2t-smart-velotrenazher",
+        "image": "media/products/neo2t_g2nQjQw.webp",
+        "description": "Интерактивный велостанок Tacx Neo 2T Smart с прямым приводом, системой электромагнитного сопротивления и реалистичным режимом тренировки. Применяется для тренировки в помещении на шоссейных и МТБ велосипедах всех типов.",
+        "price": "127000",
+        "available": true,
+        "created": "2020-10-05T06:34:32.719Z",
+        "updated": "2020-10-09T07:00:54.336Z",
+        "category": [
+            2,
+            10
+        ]
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 4,
+    "fields": {
+        "name": "Кассета Shimano Ultegra R8000 11-25 11ск.",
+        "slug": "kasseta-shimano-ultegra-r8000-11-25-11sk",
+        "image": "media/products/Кассета_Shimano_Ultegra_R8000_11-25_11ск._kHWF4Ot.webp",
+        "description": "Кассета Shimano Ultegra R8000 11-25 11ск.",
+        "price": "9800",
+        "available": true,
+        "created": "2020-10-05T06:35:41.000Z",
+        "updated": "2020-10-09T06:52:03.089Z",
+        "category": [
+            2,
+            9
+        ]
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 5,
+    "fields": {
+        "name": "Суперочки",
+        "slug": "superochki",
+        "image": "media/products/Blitz.webp",
+        "description": "Это супер очки",
+        "price": "15000",
+        "available": true,
+        "created": "2020-10-09T06:48:12.365Z",
+        "updated": "2020-10-09T06:55:29.516Z",
+        "category": [
+            2,
+            6
+        ]
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 6,
+    "fields": {
+        "name": "Шлемище",
+        "slug": "shlemishe",
+        "image": "media/products/FlowThroughVentilation.jpg",
+        "description": "Какое-то описание шлема.",
+        "price": "6990",
+        "available": true,
+        "created": "2020-10-09T06:48:45.701Z",
+        "updated": "2020-10-09T06:48:45.701Z",
+        "category": [
+            2,
+            5
+        ]
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+        "name": "Велосипеды",
+        "slug": "velosipedy"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+        "name": "Велоаксессуары",
+        "slug": "veloaksessuary"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+        "name": "Компоненты",
+        "slug": "komponenty"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+        "name": "Статьи",
+        "slug": "articles"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 5,
+    "fields": {
+        "name": "Шлемы",
+        "slug": "shlemy"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 6,
+    "fields": {
+        "name": "Очки",
+        "slug": "ochki"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 7,
+    "fields": {
+        "name": "Шоссейные",
+        "slug": "shossejnye"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 8,
+    "fields": {
+        "name": "Горные",
+        "slug": "gornye"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 9,
+    "fields": {
+        "name": "Кассеты",
+        "slug": "kassety"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 10,
+    "fields": {
+        "name": "Станки",
+        "slug": "stanki"
+    }
+},
+{
+    "model": "shop.article",
+    "pk": 1,
+    "fields": {
+        "slug": "kak-vybrat-velosiped",
+        "header": "Как выбрать велосипед?",
+        "text": "Выбор хорошего велосипеда – основа вашего комфорта и безопасности во время езды. Перед приобретением оцените свои навыки, так как байки бывают трех типов:\r\n- любительские; \r\n- полупрофессиональные; \r\n- профессиональные. \r\n\r\nГлавный критерий – БАБКИ.",
+        "category": 4,
+        "image": "media/articles/DSC_1213-1site.jpg",
+        "related_product": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "shop.article",
+    "pk": 2,
+    "fields": {
+        "slug": "tehnika-pedalirovaniya-v-goru",
+        "header": "Техника педалирования в гору",
+        "text": "Сегодня хочу рассказать про особенности поездки в горных условиях, где периодически велосипедист сталкивается с подъемом и спуском по крутым склонам.\r\nПоездка в горы порой ассоциируется с горными велосипедами MTB, однако путешествовать можно на велосипедах любого типа. Главное, чтобы велосипед имел возможность изменять передаточные значения – 6-18 скоростей будет вполне достаточно. Изменяя передаточное значение, вы меняете крутящий момент и, при определенной комбинации передней и задней передачи, подъем в гору будет легким и эффективным",
+        "category": 4,
+        "image": "media/articles/bike.jpg",
+        "related_product": [
+            3,
+            4,
+            5,
+            6
+        ]
+    }
+}
+]

@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser
 from orders.models import Order
 
 
@@ -16,5 +16,6 @@ class User(models.Model):
         verbose_name = 'Покупатель'
         verbose_name_plural = "Покупатели"
 
-    def set_password(self, string):
-        return hash(string)
+    def set_password(self, raw_password): #Эта функция работает криво. Надо либо переунаследоваться от АбстрактЮзер
+                                    #либо разобраться как правильно этот хэш в базу писать...
+        return raw_password
