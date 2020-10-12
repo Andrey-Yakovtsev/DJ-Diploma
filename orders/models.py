@@ -3,12 +3,13 @@ from shop.models import Product
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=40)
+    username = models.CharField(max_length=40, verbose_name='Ваш логин для сайта')
+    first_name = models.CharField(max_length=40, verbose_name='Имя')
+    last_name = models.CharField(max_length=40, verbose_name='Фамилия')
     email = models.EmailField(max_length=50)
-    address = models.CharField(max_length=250)
-    city = models.CharField(max_length=20)
-    phone = models.CharField(max_length=11)
+    address = models.CharField(max_length=250, verbose_name='Адрес')
+    city = models.CharField(max_length=20, verbose_name='Город')
+    phone = models.CharField(max_length=11, verbose_name='Номер телефона')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)

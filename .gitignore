@@ -1,3 +1,5 @@
 *settings*
 /shop/migrations/*
 /Ecommerce-Template-Bootstrap-master/*
+/users/migrations/*
+/orders/migrations/*
