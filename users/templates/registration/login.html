@@ -20,6 +20,7 @@
         <input type="hidden" value="{{ next }}" />
         <p><input type="submit" value="Войти"></p>
     </form>
+        <h2>Если вы еще не зарегистрированы, то <a href="{% url 'users:register' %}">ЗАРЕГИСТРИРУЙТЕСЬ</a> </h2>
     </div>
     </div>
 {% endblock content %}

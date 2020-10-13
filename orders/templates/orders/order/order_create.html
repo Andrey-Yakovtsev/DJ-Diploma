@@ -12,7 +12,7 @@
     <ul>
         {% for item in cart %}
         <li> {{ item.quantity }} x {{ item.product.name }}
-            <span>{{ item.total.price }} руб.</span>
+            <span>{{ item.total.price }}</span>
         </li>
         {% endfor %}
     </ul>
