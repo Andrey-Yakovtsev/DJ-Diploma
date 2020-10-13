@@ -25,11 +25,11 @@ def order_create(request):
                         quantity=item['quantity'],
                     )
                 order.save()
-                # neworder = UsersOrders.objects.create(
-                #     user_id=request.user.id,
-                #     order_id=Order.objects.latest('id'),
-                # )
-                # neworder.save()
+                neworder = UsersOrders.objects.create(
+                    user_id=request.user.id,
+                    order_id=Order.objects.latest('id').id,
+                )
+                neworder.save()
                 #очищаем корзину
                 cart.clear()
                 return render(request, 'orders/order/order_created.html', {'order': order})
