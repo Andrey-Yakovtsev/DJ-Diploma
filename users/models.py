@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from orders.models import Order
 
 
-class User(User):
+class SiteUser(User):
     # user_name = models.CharField(max_length=40)
     # first_name = models.CharField(max_length=40)
     # last_name = models.CharField(max_length=40)

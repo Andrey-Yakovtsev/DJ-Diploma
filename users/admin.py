@@ -1,7 +1,7 @@
 from django.contrib import admin
-from.models import User
+from.models import SiteUser
 
-@admin.register(User)
+@admin.register(SiteUser)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['id', 'first_name', 'last_name',
                     'phone', 'email', 'address', 'city',

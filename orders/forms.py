@@ -1,6 +1,6 @@
 from django import forms
 
-from users.models import User
+from users.models import SiteUser
 from .models import Order
 
 
@@ -15,7 +15,7 @@ class OrderCreateForm(forms.ModelForm):
 
     def clean(self):
         username = self.cleaned_data['username']
-        existing_user_query = User.objects.filter(
+        existing_user_query = SiteUser.objects.filter(
             username=username
         )
         if existing_user_query.exists():

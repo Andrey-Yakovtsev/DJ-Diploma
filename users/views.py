@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from users.forms import LoginForm, UserRegistrationForm
-from users.models import User
+from users.models import SiteUser
 
 
 def user_login(request):
@@ -38,7 +38,7 @@ def dashboard(request):
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)   #Добавить поиск по мылу, среди существующих
-        if User.objects.get(email__iexact=user_form['email']):
+        if SiteUser.objects.get(email__iexact=user_form['email']):
             return HttpResponse('Такой пользователь уже зарегистрирован. Авторизуйтесь: LINK ')     #ENter link
         else:
             if user_form.is_valid():
