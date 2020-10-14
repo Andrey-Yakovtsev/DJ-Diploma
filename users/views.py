@@ -25,7 +25,7 @@ def user_login(request):
     else:
         form = LoginForm()
 
-    return render(request, 'users/login.html', {'form': form})
+    return render(request, 'users/templates/login.html', {'form': form})
 
 @login_required()
 def dashboard(request):

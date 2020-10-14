@@ -1,4 +1,5 @@
 {% load static %}
+{% load account %}
 
 <!DOCTYPE html>
 <html lang="en" >
@@ -88,7 +89,7 @@
     </div>
 
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-       href="{% url 'users:login' %}">
+       href="{% url 'account_login' %}">
       Войти</a>
 
   </div>

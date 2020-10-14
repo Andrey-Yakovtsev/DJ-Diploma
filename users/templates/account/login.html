@@ -1,6 +1,7 @@
 {% extends 'shop/blank.html' %}
 {% load static %}
 
+
 {% block title %}
     Страница авторизации
 {% endblock title %}
@@ -10,6 +11,8 @@
 
 <h3> Войдите, чтобы использовать все возможности: </h3>
 
+
+
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
@@ -17,7 +20,7 @@
         <button class="btn btn-lg btn-success" type="submit">Войти</button>
     </form>
 
-
+<p>Если вы еще не зарегистрированы, то <a href="{% url 'account_signup' %}">Зарегистрируйтесь</a></p>
 
 </div>
 {% endblock content %}

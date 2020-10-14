@@ -18,3 +18,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ['header']
     prepopulated_fields = {'slug': ('header',)}
+
+
+

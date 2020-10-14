@@ -1,4 +1,5 @@
 {% load static %}
+{% load account %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +87,7 @@
 
 
           <li class="nav-item">
-            <a href="{% url 'users:logout' %}" class="nav-link border border-light rounded waves-effect">
+            <a href="{% url 'account_logout' %}" class="nav-link border border-light rounded waves-effect">
               <i class="fas fa-sign-in-alt"></i>Выйти
             </a>
           </li>
@@ -149,7 +150,7 @@
 
 
           <li class="nav-item">
-            <a href="{% url 'users:login' %}" class="nav-link border border-light rounded waves-effect">
+            <a href="{% url 'account_login' %}" class="nav-link border border-light rounded waves-effect">
               <i class="fas fa-sign-in-alt"></i>Войти
             </a>
           </li>

@@ -40,4 +40,4 @@ def order_create(request):
                     'form': form}
                   )
     else:
-        return redirect('users:register')
+        return redirect('account_signup')
