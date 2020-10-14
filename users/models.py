@@ -1,14 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from orders.models import Order
-from django.urls import reverse
 
 
 class SiteUser(User):
-    # user_name = models.CharField(max_length=40)
-    # first_name = models.CharField(max_length=40)
-    # last_name = models.CharField(max_length=40)
-    # email = models.EmailField(max_length=50)
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=20)
     phone = models.CharField(max_length=11)
@@ -22,9 +17,6 @@ class SiteUser(User):
     # def __str__(self):
     #     return f'{self.username} - {self.first_name} - {self.last_name}'
 
-    # def get_absolute_url(self):
-    #     return reverse('users:register')
-    # args=[self.slug])
 
 
 class UsersOrders(models.Model):

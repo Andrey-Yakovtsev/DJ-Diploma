@@ -43,11 +43,10 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
-
-
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -138,3 +137,11 @@ CART_SESSION_ID = 'cart'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ]
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
