@@ -1,6 +1,9 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
+from users.models import UsersOrders, SiteUser
 from .models import Product, Category, Article
+# from django.contrib.auth.models import User
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

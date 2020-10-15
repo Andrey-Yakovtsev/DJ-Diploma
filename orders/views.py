@@ -10,7 +10,6 @@ from users.models import SiteUser, UsersOrders
 
 
 def order_create(request):
-    print(request.user.id)
     if request.user.is_authenticated:
         cart = Cart(request)
         if request.method == 'POST':

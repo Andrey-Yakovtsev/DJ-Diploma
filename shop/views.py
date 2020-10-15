@@ -34,7 +34,7 @@ def product_list(request, category_slug=None):
         products = products.filter(category=category)
 
     cart_product_form = CartAddProductForm()
-    paginator = Paginator(list(products), 3)
+    paginator = Paginator(list(products), 4)
     current_page = request.GET.get('page', 1)
     page_obj = paginator.get_page(current_page)
 

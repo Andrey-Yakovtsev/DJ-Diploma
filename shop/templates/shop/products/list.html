@@ -1,39 +1,142 @@
-{% extends 'shop/base.html' %}
+{% extends 'shop/base2.html' %}
 {% load static %}
+{% load price_format %}
 {% block title %}
     Листинг товаров
 {% endblock title %}
 {% block content  %}
+<!--Main layout-->
+  <main>
+    <div class="container">
+    <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark blue lighten-2 mt-3 mb-5">
 
-    <div class="container mb-5">
-    <!-- Example row of columns -->
-        <div class="row">
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Categories:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">All
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Shirts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sport wears</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Outwears</a>
+            </li>
+
+          </ul>
+          <!-- Links -->
+
+          <form class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+
+    <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <!--Grid row-->
+        <div class=card-deck>
             {% for product in products %}
-            <div class="col-md-4">
-                <h5>{{ product.name }}</h5>
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image.url }}" width="360">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ product.image }}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight" ></div>
                 </a>
-                <br>
-                <h6 class="btn-outline-info">{{ product.price }} Руб.</h6>
-                <br>
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="{% url 'shop:product_list_by_category' 'category_slug' %}" class="grey-text">
+                  <h5>{{ product.category.first }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ product.get_absolute_url }}" class="dark-grey-text">{{ product.name }}
+                      <span class="badge badge-pill danger-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong> {{ product.price | price_format }} </strong> <i class="fas fa-ruble-sign"></i>
+                </h4>
+                  <form action="{% url 'cart:cart_add' product.id %}" method="post">
             {{ cart_product_form }}
             {% csrf_token %}
-          <input type="submit" class="btn btn-secondary" value="Купить">
+          <input type="submit" class="btn btn-blue blue lighten-2 rounded" value="Купить">
                 </form>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <nav>
-    <div>
-    <ul align="center">
-          {% if prev_page_url %}<a class="button button-primary" href="{{ prev_page_url }}">⟵</a>{% endif %}
-    <a class="button disabled" href="">{{ current_page }}</a>
-    {% if next_page_url %}<a class="button button-primary" href="{{ next_page_url }}">⟶</a>{% endif %}
-    </ul>
-    </div>
-    </nav>
 
+              </div>
+              <!--Card content-->
+            </div>
+            <!--Card-->
+          </div>
+            {% endfor %}
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!--Section: Products v.3-->
+    <!--Pagination-->
+    <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+          {% if prev_page_url %}
+              <li class="page-item">
+                <a class="page-link" tabindex="-1" href="{{ prev_page_url }}">Previous
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+          {% endif %}
+
+        <li class="page-item active">
+            <a class="page-link" href=""> {{ current_page }}
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>
+
+        {% if next_page_url %}
+            <li class="page-item">
+                <a class="page-link" href="{{ next_page_url }}">Next
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        {% endif %}
+        </ul>
+    </nav>
+      <!--Pagination-->
+    </div>
+  </main>
 {% endblock %}

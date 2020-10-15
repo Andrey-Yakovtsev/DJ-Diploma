@@ -7,7 +7,7 @@ class SiteUser(User):
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=20)
     phone = models.CharField(max_length=11)
-    # orders = models.ManyToManyField(Order, related_name='users', through='UsersOrders')
+    orders = models.ManyToManyField(Order, related_name='users', through='UsersOrders')
 
     class Meta:
         ordering = ('last_name',)
@@ -20,6 +20,6 @@ class SiteUser(User):
 
 
 class UsersOrders(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
