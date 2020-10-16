@@ -1,4 +1,4 @@
-{% extends 'shop/base.html' %}
+{% extends 'shop/base2.html' %}
 {% load account %}
 
 {% block title %}
@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="container-fluid">
+    <div class="container block-1 mt-5 pt-5">
 <h1>Оформление заказа</h1>
 <div class="order-info">
     <h3>Ваш заказ</h3>
@@ -21,6 +21,7 @@
 </div>
 <form method="post" class="order-form" >
     {{ form.as_p }}
+    {% csrf_token %}
     <p><input type="submit" value="Заказать"></p>
     {% csrf_token %}
 </form>

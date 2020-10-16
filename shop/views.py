@@ -52,7 +52,8 @@ def product_list(request, category_slug=None):
                    })
 
 def product_detail(request, id, slug):
-    category = Category.objects.all()
+    category = Category.objects.filter(parent_category=None)
+    subcategories = Category.objects.filter(parent_category=True)
     product = get_object_or_404(
         Product,
         id=id,
@@ -64,6 +65,7 @@ def product_detail(request, id, slug):
                   'shop/products/detail.html',
                   {'product': product,
                    'category': category,
+                   'subcategories': subcategories,
                    'cart_product_form': cart_product_form})
 
 

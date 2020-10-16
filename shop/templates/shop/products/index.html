@@ -171,11 +171,7 @@
 
           <!-- Links -->
           <ul class="navbar-nav mr-auto">
-{#            <li class="nav-item active">#}
-{#              <a class="nav-link" href="#">Порулярные#}
-{#                <span class="sr-only">(current)</span>#}
-{#              </a>#}
-{#            </li>#}
+
             <li class="nav-item">
               <a class="nav-link" href="{% url 'shop:product_list_by_category' 'shossejnye' %}">Шоссеники</a>
             </li>
@@ -214,7 +210,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src="{{ product.image }}" class="card-img-top"
+                <img src="{{ product.image.url }}" class="card-img-top"
                   alt="">
                 <a>
                   <div class="mask rgba-white-slight" ></div>

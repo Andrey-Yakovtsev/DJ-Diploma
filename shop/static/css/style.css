@@ -21,3 +21,11 @@ body,
 /* Footer color for sake of consistency with Navbar */
 .page-footer {
   background-color: #929FBA; }
+
+/* Мой самодельный блок */
+.block-1 {
+  background: white;
+  padding: 50px 0;
+  min-height: 100px;
+position: relative;
+}

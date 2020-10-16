@@ -14,6 +14,7 @@ class Category(models.Model):
         max_length=40,
         unique=True
     )
+    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         ordering = ('name',)
@@ -52,7 +53,9 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_detail',
-                       args=[self.id, self.slug])
+                       args=[
+                           self.id,
+                           self.slug])
 
 
 class Article(models.Model):
