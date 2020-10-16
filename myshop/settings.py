@@ -45,18 +45,6 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'users.apps.UsersConfig',
-
-    #allauth apps
-    'allauth',
-    'allauth.account',
-    # 'allauth.socialaccount',
-
-    #allauth providers
-    # 'allauth.socialaccount.providers.facebook',
-    # 'allauth.socialaccount.providers.google',
-    # 'allauth.socialaccount.providers.instagram',
-    # 'allauth.socialaccount.providers.telegram',
-    # 'allauth.socialaccount.providers.yandex',
 ]
 
 MIDDLEWARE = [
@@ -85,20 +73,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
 
-                # `allauth
-                'django.template.context_processors.request',
             ],
         },
     },
 ]
 
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
 
 WSGI_APPLICATION = 'myshop.wsgi.application'
 

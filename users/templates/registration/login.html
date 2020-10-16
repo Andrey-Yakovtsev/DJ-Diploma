@@ -1,4 +1,4 @@
-{% extends 'shop/blank.html' %}
+{% extends 'shop/blank2.html' %}
 
 {% block title %}
     Авторизация
@@ -14,7 +14,7 @@
     <p>Заполните поля для входа:</p>
     {% endif %}
     <div class="login-form">
-    <form action="{% url 'login:login' %}" method="post">
+    <form action="{% url 'users:login' %}" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="hidden" value="{{ next }}" />

@@ -5,8 +5,10 @@
 {% endblock title %}
 
 {% block content %}
+    <div class="container block-1 mt-5 pt-5"
     <h1> Добро пожаловать {{ new_user.first_name }}</h1>
     <p>
   Ваш аккаунт успешно создан. Теперь вы можете <a href="{% url 'login:login' %}">Войти</a>
     </p>
+    </div>
 {% endblock content %}
