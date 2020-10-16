@@ -23,3 +23,5 @@ class UsersOrders(models.Model):
     user = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
