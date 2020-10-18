@@ -28,8 +28,8 @@
           <div class="p-4">
 
             <div class="mb-3">
-              <a href="">
-                <span class="badge purple mr-1">{{ product.category.name}}</span>
+              <a href=""> {# {% url 'shop:product_list_by_category' category.slug %} #}
+                <span class="badge purple mr-1">{{ product.category.first }}</span>
               </a>
               <a href="">
                 <span class="badge blue mr-1">New</span>

@@ -221,7 +221,7 @@
               <!--Card content-->
               <div class="card-body text-center">
                 <!--Category & Title-->
-                <a href="{% url 'shop:product_list_by_category' 'category_slug' %}" class="grey-text">
+                <a href="{{product.category.first.slug}}" class="grey-text">
                   <h5>{{ product.category.first }}</h5>
                 </a>
                 <h5>

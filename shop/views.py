@@ -7,6 +7,8 @@ from django.urls import reverse
 
 
 def main_page(request):
+    category = Category.objects.filter(parent_category=None)
+    subcategories = Category.objects.filter(parent_category__isnull=False)
     products = Product.objects.filter(available=True)
     articles = Article.objects.all()
     cart_product_form = CartAddProductForm()
@@ -16,6 +18,8 @@ def main_page(request):
     return render(request,
                   'shop/products/index.html',
                   {'articles': articles,
+                   'category': category,
+                   'subcategories': subcategories,
                    'cart_product_form': cart_product_form,
                    'products': page_obj,
                    'current_page': current_page,
@@ -26,8 +30,9 @@ def main_page(request):
                    })
 
 def product_list(request, category_slug=None):
-    category = None
-    categories = Category.objects.all()
+    # category = None
+    category = Category.objects.filter(parent_category=None)
+    subcategories = Category.objects.filter(parent_category__isnull=False)
     products = Product.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -41,7 +46,7 @@ def product_list(request, category_slug=None):
     return render(request,
                   'shop/products/list.html',
                   {'category': category,
-                   'categories': categories,
+                   'subcategories': subcategories,
                    'cart_product_form': cart_product_form,
                     'products': page_obj,
                     'current_page': current_page,
@@ -53,7 +58,7 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, id, slug):
     category = Category.objects.filter(parent_category=None)
-    subcategories = Category.objects.filter(parent_category=True)
+    subcategories = Category.objects.filter(parent_category__isnull=False)
     product = get_object_or_404(
         Product,
         id=id,
