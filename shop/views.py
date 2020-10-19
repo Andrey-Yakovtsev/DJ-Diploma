@@ -34,6 +34,16 @@ def product_list(request, category_slug=None):
     category = Category.objects.filter(parent_category=None)
     subcategories = Category.objects.filter(parent_category__isnull=False)
     products = Product.objects.filter(available=True)
+    # Это для контекст-процессора. Но пока не понял как вытягивать содержимое...
+    # if category_slug:
+    #     if not category.parent_category:
+    #         category = get_object_or_404(Category, slug=category_slug)
+    #         products = Product.objects.select_related('category').filter(category__parent_category__in=[category.id])
+    #     else:
+    #         category = get_object_or_404(Category, slug=category_slug)
+    #         products = products.filter(category=category) # Оттолкнуться от выводящей категории...
+
+
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
@@ -59,6 +69,13 @@ def product_list(request, category_slug=None):
 def product_detail(request, id, slug):
     category = Category.objects.filter(parent_category=None)
     subcategories = Category.objects.filter(parent_category__isnull=False)
+    '''
+    # ЭТО ЖОСКИЙ ХАРДКОД. СДЕЛАТЬ ЧЕРЕЗ КОНТЕКСТ-ПРОЦЕССОР
+    bikes = Product.objects.select_related('category').filter(category__parent_category__in=[1])
+    accesories = Product.objects.select_related('category').filter(category__parent_category__in=[2])
+    komponents = Product.objects.select_related('category').filter(category__parent_category__in=[3])
+    #ЭТО ЖОСКИЙ ХАРДКОД. СДЕЛАТЬ ЧЕРЕЗ КОНТЕКСТ-ПРОЦЕССОР
+    '''
     product = get_object_or_404(
         Product,
         id=id,

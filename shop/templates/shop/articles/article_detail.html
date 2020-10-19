@@ -1,5 +1,6 @@
-{% extends 'shop/base.html' %}
+{% extends 'shop/base2.html' %}
 {% load static %}
+{% load price_format %}
 
 {% block title %}
 {{ article.header }}
@@ -7,11 +8,11 @@
 
 {% block content %}
 
-    <div class="container mt-3">
+    <div class="container mt-5 pt-5">
     <!-- Example row of columns -->
-    <div class="row">
+    <div class="row mt-5 pt-5">
       <div class="col-md-12">
-        <h2>{{ article.header }}</h2>
+        <h2><strong>{{ article.header }}</strong></h2>
 
 
         <img src="{{ article.image.url }}" width="600">
@@ -33,20 +34,49 @@
         <div class="row">
             {% for product in article.related_product.prefetch_related.all %}
 
-            <div class="col-md-4">
-                <h5>{{ product.name}}</h5>
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image.url }}" width="360">
+            <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ product.image.url }}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight" ></div>
                 </a>
-                <br>
-                <h6 class="btn-outline-info">{{ product.price }} Руб.</h6>
-                <br>
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                    {{ cart_product_form }}
-                    {% csrf_token %}
-                    <input type="submit" class="btn btn-secondary" value="Купить">
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="{{product.category.first.slug}}" class="grey-text">
+                  <h5>{{ product.category.first }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ product.get_absolute_url }}" class="dark-grey-text">{{ product.name }}
+                      <span class="badge badge-pill danger-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong> {{ product.price | price_format }} </strong> <i class="fas fa-ruble-sign"></i>
+                </h4>
+                  <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+          <input type="submit" class="btn btn-blue blue lighten-2 rounded" value="Купить">
                 </form>
+
+              </div>
+              <!--Card content-->
             </div>
+            <!--Card-->
+          </div>
             {% endfor %}
         </div>
     </div>

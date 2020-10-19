@@ -1,0 +1,1 @@
+python3 manage.py dumpdata --format=json --indent=4 shop > users_products.json

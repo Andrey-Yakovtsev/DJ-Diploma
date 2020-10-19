@@ -1,5 +1,95 @@
 [
 {
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+        "name": "Велосипеды",
+        "slug": "velosipedy",
+        "parent_category": null
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+        "name": "Велоаксессуары",
+        "slug": "veloaksessuary",
+        "parent_category": null
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+        "name": "Компоненты",
+        "slug": "komponenty",
+        "parent_category": null
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+        "name": "Статьи",
+        "slug": "articles",
+        "parent_category": null
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 5,
+    "fields": {
+        "name": "Шлемы",
+        "slug": "shlemy",
+        "parent_category": 2
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 6,
+    "fields": {
+        "name": "Очки",
+        "slug": "ochki",
+        "parent_category": 2
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 7,
+    "fields": {
+        "name": "Шоссейные",
+        "slug": "shossejnye",
+        "parent_category": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 8,
+    "fields": {
+        "name": "Горные",
+        "slug": "gornye",
+        "parent_category": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 9,
+    "fields": {
+        "name": "Кассеты",
+        "slug": "kassety",
+        "parent_category": 3
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 10,
+    "fields": {
+        "name": "Станки",
+        "slug": "stanki",
+        "parent_category": 2
+    }
+},
+{
     "model": "shop.product",
     "pk": 1,
     "fields": {
@@ -10,9 +100,8 @@
         "price": "239000",
         "available": true,
         "created": "2020-10-05T06:29:26.846Z",
-        "updated": "2020-10-09T06:51:52.616Z",
+        "updated": "2020-10-19T08:38:02.167Z",
         "category": [
-            1,
             7
         ]
     }
@@ -28,9 +117,8 @@
         "price": "966900",
         "available": true,
         "created": "2020-10-05T06:32:55.518Z",
-        "updated": "2020-10-10T09:16:09.312Z",
+        "updated": "2020-10-19T08:38:08.181Z",
         "category": [
-            1,
             7
         ]
     }
@@ -46,9 +134,8 @@
         "price": "127000",
         "available": true,
         "created": "2020-10-05T06:34:32.719Z",
-        "updated": "2020-10-09T07:00:54.336Z",
+        "updated": "2020-10-19T08:37:56.049Z",
         "category": [
-            2,
             10
         ]
     }
@@ -63,10 +150,9 @@
         "description": "Кассета Shimano Ultegra R8000 11-25 11ск.",
         "price": "9800",
         "available": true,
-        "created": "2020-10-05T06:35:41.000Z",
-        "updated": "2020-10-09T06:52:03.089Z",
+        "created": "2020-10-05T06:35:41Z",
+        "updated": "2020-10-19T08:38:14.752Z",
         "category": [
-            2,
             9
         ]
     }
@@ -82,9 +168,8 @@
         "price": "15000",
         "available": true,
         "created": "2020-10-09T06:48:12.365Z",
-        "updated": "2020-10-09T06:55:29.516Z",
+        "updated": "2020-10-19T08:38:21.183Z",
         "category": [
-            2,
             6
         ]
     }
@@ -100,91 +185,10 @@
         "price": "6990",
         "available": true,
         "created": "2020-10-09T06:48:45.701Z",
-        "updated": "2020-10-09T06:48:45.701Z",
+        "updated": "2020-10-19T08:38:26.949Z",
         "category": [
-            2,
             5
         ]
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 1,
-    "fields": {
-        "name": "Велосипеды",
-        "slug": "velosipedy"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 2,
-    "fields": {
-        "name": "Велоаксессуары",
-        "slug": "veloaksessuary"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 3,
-    "fields": {
-        "name": "Компоненты",
-        "slug": "komponenty"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 4,
-    "fields": {
-        "name": "Статьи",
-        "slug": "articles"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 5,
-    "fields": {
-        "name": "Шлемы",
-        "slug": "shlemy"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 6,
-    "fields": {
-        "name": "Очки",
-        "slug": "ochki"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 7,
-    "fields": {
-        "name": "Шоссейные",
-        "slug": "shossejnye"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 8,
-    "fields": {
-        "name": "Горные",
-        "slug": "gornye"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 9,
-    "fields": {
-        "name": "Кассеты",
-        "slug": "kassety"
-    }
-},
-{
-    "model": "shop.category",
-    "pk": 10,
-    "fields": {
-        "name": "Станки",
-        "slug": "stanki"
     }
 },
 {
