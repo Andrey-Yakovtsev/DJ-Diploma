@@ -84,10 +84,10 @@ class Article(models.Model):
                        ]
         )
 
-# class Review(models.Model):
-#     # id = models.IntegerField(primary_key=True, blank=False, null=False)
-#     text = models.TextField(blank=True, null=True)
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return str(self.product.name) + ' ' + self.text[:50]
+
+class Review(models.Model):
+    text = models.TextField(blank=True, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='review')
+
+    def __str__(self):
+        return str(self.product.name) + ' ' + self.text[:50]

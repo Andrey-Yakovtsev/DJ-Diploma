@@ -77,140 +77,81 @@
 
       </div>
       <!--Grid row-->
-{% endblock %}
-      <hr>
+    {% endblock content %}
+{#    {% block content_extra %}#}
+{#      <hr>#}
+{##}
+{#      <hr>#}
+{##}
+{#    ★★★★★ <span>Вася</span>#}
+{#    <p> Хороший отзыв</p>#}
+{##}
+{#    ★★ <span>Петя</span>#}
+{#    <p> Плохой отзыв</p>#}
+{#        {% for review in reviews %}#}
+{#        {{ review }}#}
+{#        {% endfor %}#}
+{#    <hr>#}
+{##}
+{#    <div class="row">#}
+{#      <div class="col-lg-6 col-md-8 col-sm-12">#}
+{#        <h4>Оставьте отзыв:</h4>#}
+{##}
+{#        <form action="{% url 'product_detail' product.id %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            {{ form }}#}
+{#          <input type="hidden" name="csrfmiddlewaretoken"#}
+{#                 value="N4vcBqzjoYkU7OTDuAT8hq8srpvYX44nJsswuP7e3EYg0Hq8DgxuR0eiXWbSr5RZ">#}
+{#          <div class="form-group">#}
+{#            <label for="name">Имя</label>#}
+{#            <input type="text" class="form-control" id="name" aria-describedby="nameHelp"#}
+{#                   placeholder="Представтесь" name="name" data-cip-id="name">#}
+{#          </div>#}
+{#          <div class="form-group">#}
+{#            <label for="content">Содержание</label>#}
+{#            <textarea class="form-control" id="content" placeholder="Содержание"#}
+{#                      name="description"></textarea>#}
+{#          </div>#}
+{##}
+{#          <div class="form-check">#}
+{#            <input class="form-check-input" type="radio" name="mark" id="mark1" value="1">#}
+{#            <label class="form-check-label" for="mark1">#}
+{#              1#}
+{#            </label>#}
+{#          </div>#}
+{##}
+{#          <div class="form-check">#}
+{#            <input class="form-check-input" type="radio" name="mark" id="mark2" value="2">#}
+{#            <label class="form-check-label" for="mark2">#}
+{#              2#}
+{#            </label>#}
+{#          </div>#}
+{##}
+{#          <div class="form-check">#}
+{#            <input class="form-check-input" type="radio" name="mark" id="mark3" value="3">#}
+{#            <label class="form-check-label" for="mark3">#}
+{#              3#}
+{#            </label>#}
+{#          </div>#}
+{##}
+{#          <div class="form-check">#}
+{#            <input class="form-check-input" type="radio" name="mark" id="mark4" value="4">#}
+{#            <label class="form-check-label" for="mark4">#}
+{#              4#}
+{#            </label>#}
+{#          </div>#}
+{##}
+{#          <div class="form-check">#}
+{#            <input class="form-check-input" type="radio" name="mark" id="mark5" value="5">#}
+{#            <label class="form-check-label" for="mark5">#}
+{#              5#}
+{#            </label>#}
+{#          </div>#}
 
-      <!--Grid row-->
-      <div class="row d-flex justify-content-center wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 text-center">
-
-          <h4 class="my-4 h4">Additional information</h4>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-            voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-    </div>
+{#          <button type="submit" class="btn btn-primary">Оставить</button>#}
+{#        </form>#}
+{#      </div>#}
+{#    </div>#}
+{#    {% endblock content_extra %}#}
   </main>
   <!--Main layout-->
-
-  <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
-
-    <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-        <i class="fab fa-facebook-f mr-3"></i>
-      </a>
-
-      <a href="https://twitter.com/MDBootstrap" target="_blank">
-        <i class="fab fa-twitter mr-3"></i>
-      </a>
-
-      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-        <i class="fab fa-youtube mr-3"></i>
-      </a>
-
-      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-        <i class="fab fa-google-plus-g mr-3"></i>
-      </a>
-
-      <a href="https://dribbble.com/mdbootstrap" target="_blank">
-        <i class="fab fa-dribbble mr-3"></i>
-      </a>
-
-      <a href="https://pinterest.com/mdbootstrap" target="_blank">
-        <i class="fab fa-pinterest mr-3"></i>
-      </a>
-
-      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-        <i class="fab fa-github mr-3"></i>
-      </a>
-
-      <a href="http://codepen.io/mdbootstrap/" target="_blank">
-        <i class="fab fa-codepen mr-3"></i>
-      </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-    </div>
-    <!--/.Copyright-->
-
-  </footer>
-  <!--/.Footer-->
-
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="../../../static/js/jquery-3.4.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="../../../static/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="../../../static/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="../../../static/js/mdb.min.js"></script>
-  <!-- Initializations -->
-  <script type="text/javascript">
-    // Animations initialization
-    new WOW().init();
-
-  </script>
-</body>
-
-</html>

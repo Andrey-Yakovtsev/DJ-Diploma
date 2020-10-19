@@ -1,14 +1,15 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Category, Product, Article
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Category, Product, Article, Review
 from cart.forms import CartAddProductForm
 from django.core.paginator import Paginator
 from urllib.parse import urlencode
+from .forms import ReviewForm
 from django.urls import reverse
 
 
 def main_page(request):
     category = Category.objects.filter(parent_category=None)
-    subcategories = Category.objects.filter(parent_category__isnull=False)
+    # subcategories = Category.objects.filter(parent_category__isnull=False)
     products = Product.objects.filter(available=True)
     articles = Article.objects.all()
     cart_product_form = CartAddProductForm()
@@ -19,7 +20,7 @@ def main_page(request):
                   'shop/products/index.html',
                   {'articles': articles,
                    'category': category,
-                   'subcategories': subcategories,
+                   # 'subcategories': subcategories,
                    'cart_product_form': cart_product_form,
                    'products': page_obj,
                    'current_page': current_page,
@@ -34,16 +35,6 @@ def product_list(request, category_slug=None):
     category = Category.objects.filter(parent_category=None)
     subcategories = Category.objects.filter(parent_category__isnull=False)
     products = Product.objects.filter(available=True)
-    # Это для контекст-процессора. Но пока не понял как вытягивать содержимое...
-    # if category_slug:
-    #     if not category.parent_category:
-    #         category = get_object_or_404(Category, slug=category_slug)
-    #         products = Product.objects.select_related('category').filter(category__parent_category__in=[category.id])
-    #     else:
-    #         category = get_object_or_404(Category, slug=category_slug)
-    #         products = products.filter(category=category) # Оттолкнуться от выводящей категории...
-
-
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
@@ -71,25 +62,27 @@ def product_list(request, category_slug=None):
 def product_detail(request, id, slug):
     category = Category.objects.filter(parent_category=None)
     subcategories = Category.objects.filter(parent_category__isnull=False)
-    '''
-    # ЭТО ЖОСКИЙ ХАРДКОД. СДЕЛАТЬ ЧЕРЕЗ КОНТЕКСТ-ПРОЦЕССОР
-    bikes = Product.objects.select_related('category').filter(category__parent_category__in=[1])
-    accesories = Product.objects.select_related('category').filter(category__parent_category__in=[2])
-    komponents = Product.objects.select_related('category').filter(category__parent_category__in=[3])
-    #ЭТО ЖОСКИЙ ХАРДКОД. СДЕЛАТЬ ЧЕРЕЗ КОНТЕКСТ-ПРОЦЕССОР
-    '''
+    reviews = Review.objects.select_related('product').all()
     product = get_object_or_404(
         Product,
         id=id,
         slug=slug,
         available=True)
     cart_product_form = CartAddProductForm()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            Review.objects.create(text=form.cleaned_data['text'], product_id=product.id)
+
+            return redirect('shop:product_detail') #, product.id)
+    else:
+        form = ReviewForm()
 
     return render(request,
                   'shop/products/detail.html',
                   {'product': product,
                    'category': category,
-                   'subcategories': subcategories,
+                   'reviews': reviews.filter(product_id=product.id),
                    'cart_product_form': cart_product_form})
 
 
