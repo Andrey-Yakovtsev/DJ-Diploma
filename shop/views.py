@@ -47,6 +47,8 @@ def product_list(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
+        if not products:
+            products = Product.objects.select_related('category').filter(category__parent_category=int(category.id))
 
     cart_product_form = CartAddProductForm()
     paginator = Paginator(list(products), 4)
