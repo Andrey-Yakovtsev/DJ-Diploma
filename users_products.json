@@ -93,6 +93,7 @@
     "model": "shop.product",
     "pk": 1,
     "fields": {
+        "category": 7,
         "name": "Wilier 101NDR 105 7000 Aksium / 2020",
         "slug": "wilier-101ndr-105-7000-aksium-2020",
         "image": "media/products/aa48f04f-a014-11ea-b837-b42e9964e487_dfbc2963-f26d-11ea-b846-_MPhLLeU_s5ECLNC.webp",
@@ -100,16 +101,14 @@
         "price": "239000",
         "available": true,
         "created": "2020-10-05T06:29:26.846Z",
-        "updated": "2020-10-19T08:38:02.167Z",
-        "category": [
-            7
-        ]
+        "updated": "2020-10-19T15:44:00.114Z"
     }
 },
 {
     "model": "shop.product",
     "pk": 2,
     "fields": {
+        "category": 7,
         "name": "Велосипед FELT AR FRD / 2018",
         "slug": "felt-ar-frd-2018",
         "image": "media/products/felt_frd_mdnJeyW.webp",
@@ -117,16 +116,14 @@
         "price": "966900",
         "available": true,
         "created": "2020-10-05T06:32:55.518Z",
-        "updated": "2020-10-19T08:38:08.181Z",
-        "category": [
-            7
-        ]
+        "updated": "2020-10-19T15:44:06.048Z"
     }
 },
 {
     "model": "shop.product",
     "pk": 3,
     "fields": {
+        "category": 10,
         "name": "TACX NEO 2T Smart / Велотренажер",
         "slug": "tacx-neo-2t-smart-velotrenazher",
         "image": "media/products/neo2t_g2nQjQw.webp",
@@ -134,16 +131,14 @@
         "price": "127000",
         "available": true,
         "created": "2020-10-05T06:34:32.719Z",
-        "updated": "2020-10-19T08:37:56.049Z",
-        "category": [
-            10
-        ]
+        "updated": "2020-10-19T15:43:53.791Z"
     }
 },
 {
     "model": "shop.product",
     "pk": 4,
     "fields": {
+        "category": 3,
         "name": "Кассета Shimano Ultegra R8000 11-25 11ск.",
         "slug": "kasseta-shimano-ultegra-r8000-11-25-11sk",
         "image": "media/products/Кассета_Shimano_Ultegra_R8000_11-25_11ск._kHWF4Ot.webp",
@@ -151,16 +146,14 @@
         "price": "9800",
         "available": true,
         "created": "2020-10-05T06:35:41Z",
-        "updated": "2020-10-19T08:38:14.752Z",
-        "category": [
-            9
-        ]
+        "updated": "2020-10-19T15:44:12.515Z"
     }
 },
 {
     "model": "shop.product",
     "pk": 5,
     "fields": {
+        "category": 6,
         "name": "Суперочки",
         "slug": "superochki",
         "image": "media/products/Blitz.webp",
@@ -168,16 +161,14 @@
         "price": "15000",
         "available": true,
         "created": "2020-10-09T06:48:12.365Z",
-        "updated": "2020-10-19T08:38:21.183Z",
-        "category": [
-            6
-        ]
+        "updated": "2020-10-19T15:44:18.972Z"
     }
 },
 {
     "model": "shop.product",
     "pk": 6,
     "fields": {
+        "category": 5,
         "name": "Шлемище",
         "slug": "shlemishe",
         "image": "media/products/FlowThroughVentilation.jpg",
@@ -185,10 +176,7 @@
         "price": "6990",
         "available": true,
         "created": "2020-10-09T06:48:45.701Z",
-        "updated": "2020-10-19T08:38:26.949Z",
-        "category": [
-            5
-        ]
+        "updated": "2020-10-19T15:44:26.142Z"
     }
 },
 {

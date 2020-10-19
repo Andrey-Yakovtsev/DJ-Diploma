@@ -31,7 +31,7 @@
           <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'shop:product_list_by_category' 'shossejnye' %}">Шоссеники</a>
+              <a class="nav-link" href="{% url 'shop:product_list_by_category' 'shossejnye' %}">Шоссейники</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'shop:product_list_by_category' 'stanki' %}">Велостанки</a>
@@ -79,8 +79,8 @@
               <!--Card content-->
               <div class="card-body text-center">
                 <!--Category & Title-->
-                <a href="{% url 'shop:product_list_by_category' category.slug %}" class="grey-text">
-                  <h5>{{ product.category.first }}</h5>
+                <a href="{% url 'shop:product_list_by_category' product.category.slug %}" class="grey-text">
+                  <h5>{{ product.category.name }}</h5>
                 </a>
                 <h5>
                   <strong>
