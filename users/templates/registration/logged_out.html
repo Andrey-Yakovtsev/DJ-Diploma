@@ -1,4 +1,4 @@
-{% extends 'shop/blank2.html' %}
+{% extends 'shop/base2.html' %}
 
 {% block title %}
     Выход
@@ -6,7 +6,8 @@
 
 
 {% block content %}
-    <div class="container">
+    <div class="container mt-5 pt-5">
+    <p></p>
     <h1>Вы вышли из системы</h1>
     <p> Хотите, можете <a href="{% url 'login:login' %}">залогиниться снова</a></p>
 </div>
