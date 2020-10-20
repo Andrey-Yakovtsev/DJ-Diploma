@@ -9,8 +9,6 @@ from django.views.decorators.csrf import csrf_protect
 
 
 def main_page(request):
-    category = Category.objects.filter(parent_category=None)
-    # subcategories = Category.objects.filter(parent_category__isnull=False)
     products = Product.objects.filter(available=True)
     articles = Article.objects.all()
     cart_product_form = CartAddProductForm()
@@ -20,8 +18,6 @@ def main_page(request):
     return render(request,
                   'shop/products/index.html',
                   {'articles': articles,
-                   'category': category,
-                   # 'subcategories': subcategories,
                    'cart_product_form': cart_product_form,
                    'products': page_obj,
                    'current_page': current_page,
@@ -32,7 +28,6 @@ def main_page(request):
                    })
 
 def product_list(request, category_slug=None):
-    # category = None
     category = Category.objects.filter(parent_category=None)
     subcategories = Category.objects.filter(parent_category__isnull=False)
     products = Product.objects.filter(available=True)
@@ -63,7 +58,6 @@ def product_list(request, category_slug=None):
 @csrf_protect
 def product_detail(request, id, slug):
     category = Category.objects.filter(parent_category=None)
-    subcategories = Category.objects.filter(parent_category__isnull=False)
     reviews = Review.objects.select_related('product').all()
     product = get_object_or_404(
         Product,
