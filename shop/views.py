@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from urllib.parse import urlencode
 from .forms import ReviewForm
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_protect
 
 
 def main_page(request):
@@ -59,6 +60,7 @@ def product_list(request, category_slug=None):
                         'page': page_obj.next_page_number()}) if page_obj.has_next() else None
                    })
 
+@csrf_protect
 def product_detail(request, id, slug):
     category = Category.objects.filter(parent_category=None)
     subcategories = Category.objects.filter(parent_category__isnull=False)
@@ -70,19 +72,26 @@ def product_detail(request, id, slug):
         available=True)
     cart_product_form = CartAddProductForm()
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            Review.objects.create(text=form.cleaned_data['text'], product_id=product.id)
+        review = ReviewForm(request.POST)
+        if review.is_valid():
+            Review.objects.create(text=review.cleaned_data['text'], product=product)
 
-            return redirect('shop:product_detail') #, product.id)
+            return render(request,
+                          'shop/products/detail.html',
+                          {'product': product,
+                           'form': review,
+                           'category': category,
+                           'reviews': reviews.filter(product=product),
+                           'cart_product_form': cart_product_form})
     else:
-        form = ReviewForm()
+        review = ReviewForm()
 
     return render(request,
                   'shop/products/detail.html',
                   {'product': product,
                    'category': category,
-                   'reviews': reviews.filter(product_id=product.id),
+                   'form': review,
+                   'reviews': reviews.filter(product=product),
                    'cart_product_form': cart_product_form})
 
 

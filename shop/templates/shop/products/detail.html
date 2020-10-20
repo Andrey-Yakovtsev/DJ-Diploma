@@ -78,26 +78,27 @@
       </div>
       <!--Grid row-->
     {% endblock content %}
-{#    {% block content_extra %}#}
-{#      <hr>#}
-{##}
-{#      <hr>#}
-{##}
-{#    ★★★★★ <span>Вася</span>#}
-{#    <p> Хороший отзыв</p>#}
-{##}
-{#    ★★ <span>Петя</span>#}
-{#    <p> Плохой отзыв</p>#}
-{#        {% for review in reviews %}#}
-{#        {{ review }}#}
-{#        {% endfor %}#}
-{#    <hr>#}
-{##}
-{#    <div class="row">#}
-{#      <div class="col-lg-6 col-md-8 col-sm-12">#}
-{#        <h4>Оставьте отзыв:</h4>#}
-{##}
-{#        <form action="{% url 'product_detail' product.id %}" method="post">#}
+    {% block content_extra %}
+    <div class="container">
+      <hr>
+    <h2> <strong> Отзывы от товаре:</strong></h2>
+        {% for review in reviews %}
+        {{ review }}
+            <br>
+        {% endfor %}
+    <hr>
+
+    <div class="form-group">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <h4>Поделитесь мнением:</h4>
+         <form action="{{ product.get_absolute_url }}" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <br>
+                <button type="submit" class="btn btn-primary">Оставить</button>
+            </form>
+{#        <form action="{{ product.get_absolute_url }}" method="post">#}
+            {#  {% url 'shop:product_detail' product.slug %} #}
 {#            {% csrf_token %}#}
 {#            {{ form }}#}
 {#          <input type="hidden" name="csrfmiddlewaretoken"#}
@@ -108,7 +109,7 @@
 {#                   placeholder="Представтесь" name="name" data-cip-id="name">#}
 {#          </div>#}
 {#          <div class="form-group">#}
-{#            <label for="content">Содержание</label>#}
+{#            <label for="content">Ваш отзыв о продукте:</label>#}
 {#            <textarea class="form-control" id="content" placeholder="Содержание"#}
 {#                      name="description"></textarea>#}
 {#          </div>#}
@@ -147,11 +148,12 @@
 {#              5#}
 {#            </label>#}
 {#          </div>#}
-
+{##}
 {#          <button type="submit" class="btn btn-primary">Оставить</button>#}
 {#        </form>#}
-{#      </div>#}
-{#    </div>#}
-{#    {% endblock content_extra %}#}
+      </div>
+    </div>
+    {% endblock content_extra %}
+    </div>
   </main>
   <!--Main layout-->

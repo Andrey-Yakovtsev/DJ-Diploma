@@ -1,9 +1,15 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-
 from users.models import UsersOrders, SiteUser
-from .models import Product, Category, Article
+from .models import Product, Category, Article, Review
+
 # from django.contrib.auth.models import User
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product', 'text')
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -12,10 +18,12 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'parent_category']
     prepopulated_fields = {'slug': ('name',)}
+
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):

@@ -210,5 +210,69 @@
             6
         ]
     }
+},
+{
+    "model": "shop.review",
+    "pk": 1,
+    "fields": {
+        "text": "sehbdfbdvb",
+        "product": 2
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 2,
+    "fields": {
+        "text": "Это супЕр ОЧКИ. ВСе как в описании",
+        "product": 5
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 3,
+    "fields": {
+        "text": "Еще отзыв",
+        "product": 5
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 4,
+    "fields": {
+        "text": "Отзыв про оцки номер 3",
+        "product": 5
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 5,
+    "fields": {
+        "text": "ОТзыв номер 1 про станок",
+        "product": 3
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 6,
+    "fields": {
+        "text": "Это Новый отзыв про  FELT AR FRD",
+        "product": 2
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 7,
+    "fields": {
+        "text": "Это Новый отзыв про  FELT AR FRD",
+        "product": 2
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 8,
+    "fields": {
+        "text": "Это Еще более новый отзыв про  FELT AR FRD",
+        "product": 2
+    }
 }
 ]

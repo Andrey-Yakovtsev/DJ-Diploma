@@ -87,7 +87,11 @@ class Article(models.Model):
 
 class Review(models.Model):
     text = models.TextField(blank=True, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='review')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='review', verbose_name='Товар')
 
     def __str__(self):
-        return str(self.product.name) + ' ' + self.text[:50]
+        return f' Отзыв №{str(self.id)}: {self.text[:50]}'
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'

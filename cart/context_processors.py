@@ -5,4 +5,4 @@ def cart(request):
     return {'cart': Cart(request)}
 
 def category(request):
-    return {"parent": Category.objects.filter(parent_category=None)}
+    return {"parents": Category.objects.filter(parent_category=None)}

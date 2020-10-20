@@ -50,7 +50,7 @@
   </style>
 </head>
 
-<body>
+<body class="" data-gr-c-s-loaded="true">
 
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
@@ -73,10 +73,20 @@
         <!-- Left -->
 
         <ul class="navbar-nav mr-auto">
+
+{#        <li class="nav-item dropdown">#}
+{##}
+{#              <a class="nav-link dropdown-toggle" href="" id="dropdown01"#}
+{#           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Все категории</a>#}
+{#            {% for parent in parents %}#}
+{#            <a class="dropdown-item" href="">#}
+{#            {{ parent.name }}</a>#}
+{#          {% endfor %}#}
+{#      </li>#}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="{% url 'shop:product_list_by_category' 'velosipedy' %}" id="dropdown01"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Велосипеды </a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
+        <div class="dropdown-menu" aria-labelledby="dropdown02">
           <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'velosipedy' %}">
             Шоссейные</a>
             <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'gornye' %}">
@@ -136,43 +146,6 @@
         </ul>
 
             {% else %}
-{#      <ul class="navbar-nav mr-auto">#}
-{#      <li class="nav-item active">#}
-{#        <a class="nav-link" href="{% url 'shop:main_page' %}">#}
-{#          Главная</a>#}
-{#      </li>#}
-{#      <li class="nav-item dropdown">#}
-{#        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"#}
-{#           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#          Велосипеды</a>#}
-{#        <div class="dropdown-menu" aria-labelledby="dropdown01">#}
-{#          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'velosipedy' %}">#}
-{#            Шоссейные</a>#}
-{#            <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'gornye' %}">#}
-{#            Горные</a>#}
-{#        </div>#}
-{#      </li>#}
-{#      <li class="nav-item dropdown">#}
-{#        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"#}
-{#           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#          Велоаксессуары</a>#}
-{#        <div class="dropdown-menu" aria-labelledby="dropdown01">#}
-{#          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'shlemy' %}">#}
-{#            Шлемы</a>#}
-{#            <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'ochki' %}">#}
-{#            Очки</a>#}
-{#        </div>#}
-{#      </li>#}
-{#        <li class="nav-item dropdown">#}
-{#        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"#}
-{#           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#          Компоненты</a>#}
-{#        <div class="dropdown-menu" aria-labelledby="dropdown01">#}
-{#          <a class="dropdown-item" href="{% url 'shop:product_list_by_category' 'kassety' %}">#}
-{#            Кассеты</a>#}
-{#        </div>#}
-{#      </li>#}
-{#    </ul>#}
 
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
