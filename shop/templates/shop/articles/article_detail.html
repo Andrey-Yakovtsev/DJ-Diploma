@@ -33,7 +33,7 @@
     <!-- Example row of columns -->
         <div class="row">
             {% for product in article.related_product.prefetch_related.all %}
-
+{#            {% for product in products %}#}
             <div class="col-lg-3 col-md-6 mb-4">
 
             <!--Card-->
@@ -52,8 +52,8 @@
               <!--Card content-->
               <div class="card-body text-center">
                 <!--Category & Title-->
-                <a href="{{product.category.first.slug}}" class="grey-text">
-                  <h5>{{ product.category.first }}</h5>
+                <a href="{{product.category.slug}}" class="grey-text">
+                  <h5>{{ product.category.name }}</h5>
                 </a>
                 <h5>
                   <strong>

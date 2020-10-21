@@ -9,8 +9,8 @@ from django.views.decorators.csrf import csrf_protect
 
 
 def main_page(request):
-    products = Product.objects.filter(available=True)
-    articles = Article.objects.all()
+    products = Product.objects.select_related('category').filter(available=True)
+    articles = Article.objects.select_related('category').all()
     cart_product_form = CartAddProductForm()
     paginator = Paginator(list(products), 4)
     current_page = request.GET.get('page', 1)
@@ -91,7 +91,8 @@ def product_detail(request, id, slug):
 
 
 def article_detail(request, category_slug, article_slug):
-    products = Product.objects.select_related('category')
+    products = Product.objects.select_related('category').all()
+    # products = Article.objects.prefetch_related('related_product__products__category').all()
     cart_product_form = CartAddProductForm()
     article = get_object_or_404(Article, slug=article_slug)
     return render(request,
