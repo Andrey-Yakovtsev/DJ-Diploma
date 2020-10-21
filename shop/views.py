@@ -91,10 +91,10 @@ def product_detail(request, id, slug):
 
 
 def article_detail(request, category_slug, article_slug):
-    products = Product.objects.select_related('category').all()
-    # products = Article.objects.prefetch_related('related_product__products__category').all()
+    products = Article.objects.prefetch_related('related_product').all()
     cart_product_form = CartAddProductForm()
     article = get_object_or_404(Article, slug=article_slug)
+    # products = article.related_product
     return render(request,
                   'shop/articles/article_detail.html',
                   {'products': products,
