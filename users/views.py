@@ -27,13 +27,6 @@ def user_login(request):
 
     return render(request, 'users/login.html', {'form': form})
 
-@login_required()
-def dashboard(request):
-    return render(
-        request,
-        'users/dashboard.html',
-        {'section': 'dashboard'}
-    )
 
 def register(request):
     if request.method == 'POST':

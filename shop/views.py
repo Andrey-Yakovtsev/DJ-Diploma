@@ -91,13 +91,16 @@ def product_detail(request, id, slug):
 
 
 def article_detail(request, category_slug, article_slug):
-    products = Article.objects.prefetch_related('related_product').all()
     cart_product_form = CartAddProductForm()
-    article = get_object_or_404(Article, slug=article_slug)
-    # products = article.related_product
+    article = get_object_or_404(
+        Article.objects.prefetch_related(
+            'related_product', 'related_product__category'
+        ),
+        slug=article_slug
+    )
+
     return render(request,
                   'shop/articles/article_detail.html',
-                  {'products': products,
-                    'article': article,
+                  {'article': article,
                     'cart_product_form': cart_product_form
                    })

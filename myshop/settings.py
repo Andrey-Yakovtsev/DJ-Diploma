@@ -152,3 +152,7 @@ if DEBUG:
     ]
 
 AUTHENTICATION_BACKENDS = ('users.email_auth.EmailBackend', )
+
+AUTH_USER_MODEL = 'users.SiteUser'
+
+SITE_ID = 1

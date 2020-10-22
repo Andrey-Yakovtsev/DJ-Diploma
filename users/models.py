@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from orders.models import Order
 
 
-class SiteUser(User):
+class SiteUser(AbstractUser):
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=20)
     phone = models.CharField(max_length=11)
@@ -15,13 +15,10 @@ class SiteUser(User):
         verbose_name_plural = "Покупатели"
 
     # def __str__(self):
-    #     return f'{self.username} - {self.first_name} - {self.last_name}'
-
+    #     return f'{self.email} - {self.first_name} - {self.last_name}'
 
 
 class UsersOrders(models.Model):
     user = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-
-

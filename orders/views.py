@@ -26,7 +26,8 @@ def order_create(request):
                 order.save()
                 neworder = UsersOrders.objects.create(
                     user_id=request.user.id,
-                    order_id=Order.objects.latest('id').id,
+                    # order_id=Order.objects.latest('id').id,
+                    order_id=order.id,
                 )
                 neworder.save()
                 #очищаем корзину
